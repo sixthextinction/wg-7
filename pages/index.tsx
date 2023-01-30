@@ -40,24 +40,30 @@ const Home: NextPage = () => {
         </form>
         {isLoading ? (
           <p className="text-white font-xl"> Loading...</p>
+        ) : data?.success ? (
+          <>
+            <div className="flex items-center justify-center h-full w-full mx-5 my-5 grid grid-cols-4 lg:grid-cols-8 gap-x-0 gap-y-8">
+              {data?.albums?.results.map((album) => (
+                <a href={album?.collectionViewUrl}>
+                  <img
+                    key={album?.collectionId}
+                    src={album?.artworkUrl100}
+                    className="h-48 object-cover hover:scale-110"
+                    alt={album?.collectionName}
+                    title={album?.artistName + "\n" + album?.collectionName}
+                  />
+                </a>
+              ))}
+            </div>
+          </>
         ) : (
-          // <pre className="overflow-x-auto">
-          //   {JSON.stringify(data, null, 2)}
-          // </pre>
-          <div className="flex items-center justify-center h-full w-full mx-5 my-5 grid grid-cols-4 lg:grid-cols-8 gap-x-0 gap-y-8">
-            {data?.albums?.results.map((image) => (
-              <a href={image?.collectionViewUrl}>
-                <img
-                  key={image?.collectionId}
-                  src={image?.artworkUrl100}
-                  className="h-48 object-cover"
-                  alt={image?.collectionName}
-				  title={image?.collectionName}
-                />
-              </a>
-            ))}
-          </div>
+          <>
+            <div className="flex items-center justify-center h-full w-full mx-5 my-5">
+              <strong> Bad data!</strong>
+            </div>
+          </>
         )}
+        {/* <pre className="overflow-x-auto">{JSON.stringify(data, null, 2)}</pre> */}
       </div>
     </>
   );
