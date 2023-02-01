@@ -3,12 +3,12 @@ import { useQuery, withWunderGraph } from "../components/generated/nextjs";
 import { useState } from "react";
 
 const Home: NextPage = () => {
-  const [artistQuery, setArtistQuery] = useState<string>("kylie+minogue");
-  const [searchTerm, setSearchTerm] = useState<string>("kylie minogue");
+  const [query, setQuery] = useState<string>("kylie+minogue");
+  const [searchInput, setSearchInput] = useState<string>("kylie minogue");
   const { data, mutate, isLoading } = useQuery({
     operationName: "users/get",
     input: {
-      artist: artistQuery,
+      query: query,
     },
   });
 
@@ -16,7 +16,7 @@ const Home: NextPage = () => {
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     // essentially "submit" a query
-    setArtistQuery(searchTerm);
+    setQuery(searchInput);
   };
 
   return (
@@ -26,8 +26,8 @@ const Home: NextPage = () => {
           <div className="flex border-b border-teal-500 py-2">
             <input
               type="text"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
+              value={searchInput}
+              onChange={(e) => setSearchInput(e.target.value)}
               className="appearance-none bg-transparent border-none w-full dark:text-white mr-3 py-1 px-2 leading-tight focus:outline-none"
             />
             <button
