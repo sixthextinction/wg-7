@@ -14,14 +14,26 @@ export interface GraphQLError {
 	path?: ReadonlyArray<string | number>;
 }
 
+export interface CoverArtByQueryInput {
+	luceneQueryString: string;
+}
+
 export type UsersGetInput = ExtractInput<typeof function_UsersGet>;
 
 export type UsersSubscribeInput = ExtractInput<typeof function_UsersSubscribe>;
 
 export type UsersUpdateInput = ExtractInput<typeof function_UsersUpdate>;
 
-export interface DragonsResponse {
-	data?: DragonsResponseData;
+export interface InternalCoverArtByQueryInput {
+	luceneQueryString: string;
+}
+
+export interface InjectedCoverArtByQueryInput {
+	luceneQueryString: string;
+}
+
+export interface CoverArtByQueryResponse {
+	data?: CoverArtByQueryResponseData;
 	errors?: ReadonlyArray<GraphQLError>;
 }
 
@@ -40,11 +52,18 @@ export interface UsersUpdateResponse {
 	errors?: ReadonlyArray<GraphQLError>;
 }
 
-export interface DragonsResponseData {
-	spacex_dragons?: {
-		name?: string;
-		active?: boolean;
-	}[];
+export interface CoverArtByQueryResponseData {
+	graphbrainz_search?: {
+		releases?: {
+			edges?: {
+				node?: {
+					coverArtArchive?: {
+						front?: string;
+					};
+				};
+			}[];
+		};
+	};
 }
 
 export type UsersGetResponseData = ExtractResponse<typeof function_UsersGet>;

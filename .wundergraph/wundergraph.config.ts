@@ -15,9 +15,14 @@ const spaceX = introspect.graphql({
 	url: 'https://spacex-api.fly.dev/graphql/',
 });
 
+const graphBrainz = introspect.graphql({
+	apiNamespace: 'graphbrainz',
+	url: 'https://graphbrainz.fly.dev/',
+});
+
 // configureWunderGraph emits the configuration
 configureWunderGraphApplication({
-	apis: [spaceX],
+	apis: [graphBrainz],
 	server,
 	operations,
 	codeGenerators: [

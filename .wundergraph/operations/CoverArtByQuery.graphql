@@ -1,0 +1,13 @@
+query($luceneQueryString: String!){
+ 	graphbrainz_search{
+    releases(query: $luceneQueryString){
+      edges{
+        node{
+          coverArtArchive{
+            front
+          }
+        }
+      }
+    }
+  }
+}

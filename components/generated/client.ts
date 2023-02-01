@@ -13,8 +13,9 @@ import {
 	FetchUserRequestOptions,
 } from "@wundergraph/sdk/client";
 import type {
-	DragonsResponse,
-	DragonsResponseData,
+	CoverArtByQueryResponse,
+	CoverArtByQueryInput,
+	CoverArtByQueryResponseData,
 	UsersGetResponse,
 	UsersGetInput,
 	UsersGetResponseData,
@@ -41,13 +42,13 @@ export interface AuthProvider {
 }
 
 export const defaultClientConfig: ClientConfig = {
-	applicationHash: "d5f12ef5",
+	applicationHash: "8f8b2c7c",
 	baseURL: "http://localhost:9991",
 	sdkVersion: "0.133.0",
 };
 
 export const operationMetadata: OperationMetadata = {
-	Dragons: {
+	CoverArtByQuery: {
 		requiresAuthentication: false,
 	},
 	"users/get": {
@@ -106,9 +107,9 @@ export const createClient = (config?: CreateClientConfig) => {
 };
 
 export type Queries = {
-	Dragons: {
-		input?: undefined;
-		data: DragonsResponseData;
+	CoverArtByQuery: {
+		input: CoverArtByQueryInput;
+		data: CoverArtByQueryResponseData;
 		requiresAuthentication: false;
 		liveQuery: boolean;
 	};
@@ -137,9 +138,9 @@ export type Subscriptions = {
 };
 
 export type LiveQueries = {
-	Dragons: {
-		input?: undefined;
-		data: DragonsResponseData;
+	CoverArtByQuery: {
+		input: CoverArtByQueryInput;
+		data: CoverArtByQueryResponseData;
 		liveQuery: true;
 		requiresAuthentication: false;
 	};

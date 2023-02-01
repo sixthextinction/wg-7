@@ -38,12 +38,12 @@ const Home: NextPage = () => {
             </button>
           </div>
         </form>
-        {isLoading ? (
+        {/* {isLoading ? (
           <p className="text-white font-xl"> Loading...</p>
         ) : data?.success ? (
           <>
             <div className="flex items-center justify-center h-full w-full mx-5 my-5 grid grid-cols-4 lg:grid-cols-8 gap-x-0 gap-y-8">
-              {data?.albums?.results.map((album) => (
+              {data?.albums?.map((album) => (
                 <a href={album?.collectionViewUrl}>
                   <img
                     key={album?.collectionId}
@@ -62,8 +62,8 @@ const Home: NextPage = () => {
               <strong> Bad data!</strong>
             </div>
           </>
-        )}
-        {/* <pre className="overflow-x-auto">{JSON.stringify(data, null, 2)}</pre> */}
+        )} */}
+        {isLoading ? <p>  Loading... </p>:<pre className="text-white overflow-x-auto">{JSON.stringify(data, null, 2)}</pre>}
       </div>
     </>
   );
